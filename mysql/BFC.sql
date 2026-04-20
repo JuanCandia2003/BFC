@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 23-02-2026 a las 21:08:04
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Servidor: db
+-- Tiempo de generación: 16-03-2026 a las 05:35:11
+-- Versión del servidor: 8.0.45
+-- Versión de PHP: 8.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bfc`
+-- Base de datos: `BFC`
 --
 
 -- --------------------------------------------------------
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `usuario` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `creado_en` timestamp NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `usuario` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `creado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -49,14 +49,14 @@ INSERT INTO `admin` (`id`, `usuario`, `password`, `nombre`, `creado_en`) VALUES
 --
 
 CREATE TABLE `bailarines` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `telefono` varchar(20) DEFAULT NULL,
-  `genero` enum('M','F','Otro') DEFAULT 'Otro',
-  `password` varchar(255) NOT NULL,
-  `activo` tinyint(1) DEFAULT 1,
-  `creado_en` timestamp NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefono` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `genero` enum('M','F','Otro') COLLATE utf8mb4_unicode_ci DEFAULT 'Otro',
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `activo` tinyint(1) DEFAULT '1',
+  `creado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `bailarines` (
 
 INSERT INTO `bailarines` (`id`, `nombre`, `email`, `telefono`, `genero`, `password`, `activo`, `creado_en`) VALUES
 (4, 'Juan Candia', 'jdcm3002@gmail.com', '12872549', 'M', '$2y$10$bHcwiAP4LMM0V/ureyvF1ORxE2t4hCkELA331TjcUGSL136U9lDVq', 1, '2026-02-10 20:24:50'),
-(5, 'Lucía Salas', 'luciasalascostas@gmail.com', '72706455', 'F', '$2y$10$MzJiBa/9ANwmTvCM5j8gZuLFOquncRVhq7GLH3eZUoTLI9nXgTOve', 1, '2026-02-19 20:44:06'),
+(5, 'Lucia Salas', 'luciasalascostas@gmail.com', '72706455', 'F', '$2y$10$MzJiBa/9ANwmTvCM5j8gZuLFOquncRVhq7GLH3eZUoTLI9nXgTOve', 1, '2026-02-19 20:44:06'),
 (6, 'Paolo Jimenez', 'pajimenez.a@gmail.com', '', 'M', '$2y$10$S25EH.jGXQ2NhTtUeb2XhuediEL/0kqWdcZzXcYl/3p0EXA2zIOkO', 1, '2026-02-19 23:16:00'),
 (7, 'Isabela Delgadillo', 'idelgadillogaldo@gmail.com', '', 'F', '$2y$10$LYhwnqMOMkb/58GpBFX.uuF.oqPHkecRoehK5MAm7jO5l7SNIyzCS', 1, '2026-02-19 23:16:37'),
 (8, 'Salvador Antequera', 'salvadorantequeracanedo@gmail.com', '', 'M', '$2y$10$x6z7PVbCodGnEXaCZZDyi.TS1O0CtiacocuE8W0gXXeIgjRHkwmCm', 1, '2026-02-19 23:17:06'),
@@ -78,7 +78,7 @@ INSERT INTO `bailarines` (`id`, `nombre`, `email`, `telefono`, `genero`, `passwo
 (15, 'Melani chiquie', 'chiquiemelaniep21@gmail.com', '', 'F', '$2y$10$YKxY4QPMvCH9QzlbJyxLpuuk/DQCul3MkwTrYW95NpdOzBVAK10Qi', 1, '2026-02-20 01:18:07'),
 (16, 'Alejandra Gutierres', 'ale05325@gmail.com', '', 'F', '$2y$10$9Imc1rqki957NuTvbs/qCuNpXJu7De9y8eJ32l8G8E6sryIuMpYgu', 1, '2026-02-20 01:18:43'),
 (17, 'Jessica Guerrero', 'guerrerojessica268@gmail.com', '', 'F', '$2y$10$lLDK9VGKRKRUwRLxdVE/yu5IqdIBHaJk8fepLqMOqJGFulwT5wydW', 1, '2026-02-20 01:19:06'),
-(18, 'Veimar Torrez', 'veimartorrez76@gmail.com', '', 'M', '$2y$10$l8fzRjTDWzS6k5LI4weX4eBsXC4Gja5BmclifAWquZAeqc92zTyfW', 1, '2026-02-20 01:34:10');
+(19, 'Veimar Torrez', 'veimartorrez@hotmail.com', '71706039', 'M', '$2y$10$ZY2b6nZc.8FO0oYrRYvlgOshufp0ZbtQG7TCy1EgiJF.VFAV/p4ZW', 1, '2026-03-06 01:57:02');
 
 -- --------------------------------------------------------
 
@@ -87,12 +87,12 @@ INSERT INTO `bailarines` (`id`, `nombre`, `email`, `telefono`, `genero`, `passwo
 --
 
 CREATE TABLE `funciones` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(150) NOT NULL,
+  `id` int NOT NULL,
+  `nombre` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha` datetime NOT NULL,
-  `lugar` varchar(150) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
-  `creado_en` timestamp NOT NULL DEFAULT current_timestamp()
+  `lugar` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `creado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -101,7 +101,9 @@ CREATE TABLE `funciones` (
 
 INSERT INTO `funciones` (`id`, `nombre`, `fecha`, `lugar`, `descripcion`, `creado_en`) VALUES
 (3, 'Boda', '2026-02-21 14:47:00', 'Salon de eventos la terraza', '', '2026-02-18 18:47:28'),
-(4, 'Prueba', '2026-02-20 23:53:00', 'Mi casita', 'Este evento es de prueba \r\n', '2026-02-18 23:49:48');
+(4, 'Prueba', '2026-02-20 23:53:00', 'Mi casita', 'Este evento es de prueba \r\n', '2026-02-18 23:49:48'),
+(5, 'Majito ', '2026-03-11 19:30:00', 'Teatro Acha ', '', '2026-03-06 01:43:43'),
+(6, 'Danza Panama', '2026-04-15 00:00:00', 'Panama', 'Solo Alejandra y Paolo ', '2026-03-06 01:53:05');
 
 -- --------------------------------------------------------
 
@@ -110,14 +112,14 @@ INSERT INTO `funciones` (`id`, `nombre`, `fecha`, `lugar`, `descripcion`, `cread
 --
 
 CREATE TABLE `prestamos` (
-  `id` int(11) NOT NULL,
-  `bailarin_id` int(11) NOT NULL,
-  `vestuario_id` int(11) NOT NULL,
-  `funcion_id` int(11) NOT NULL,
-  `fecha_solicitud` timestamp NOT NULL DEFAULT current_timestamp(),
+  `id` int NOT NULL,
+  `bailarin_id` int NOT NULL,
+  `vestuario_id` int NOT NULL,
+  `funcion_id` int NOT NULL,
+  `fecha_solicitud` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fecha_devolucion` datetime DEFAULT NULL,
-  `estado` enum('pendiente','aprobado','rechazado','devuelto') DEFAULT 'pendiente',
-  `observaciones` text DEFAULT NULL
+  `estado` enum('pendiente','aprobado','rechazado','devuelto') COLLATE utf8mb4_unicode_ci DEFAULT 'pendiente',
+  `observaciones` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -138,11 +140,11 @@ INSERT INTO `prestamos` (`id`, `bailarin_id`, `vestuario_id`, `funcion_id`, `fec
 (16, 4, 8, 3, '2026-02-19 21:38:29', '2026-02-19 21:21:33', 'devuelto', ''),
 (17, 4, 8, 3, '2026-02-19 21:38:47', NULL, 'aprobado', ''),
 (18, 11, 9, 3, '2026-02-20 01:18:20', NULL, 'aprobado', ''),
-(19, 13, 4, 3, '2026-02-20 01:18:31', NULL, 'aprobado', 'Sin número CN'),
+(19, 13, 4, 3, '2026-02-20 01:18:31', NULL, 'aprobado', 'Sin n??mero CN'),
 (20, 11, 14, 3, '2026-02-20 01:18:36', NULL, 'aprobado', ''),
 (21, 12, 15, 3, '2026-02-20 01:19:08', NULL, 'aprobado', 'Crema'),
 (22, 12, 16, 3, '2026-02-20 01:19:14', NULL, 'aprobado', ''),
-(23, 12, 4, 3, '2026-02-20 01:19:25', NULL, 'aprobado', ''),
+(23, 12, 4, 3, '2026-02-20 01:19:25', '2026-03-06 01:56:10', 'devuelto', ''),
 (24, 9, 4, 3, '2026-02-20 01:19:37', NULL, 'aprobado', ''),
 (25, 9, 4, 3, '2026-02-20 01:19:55', '2026-02-19 21:20:36', 'devuelto', ''),
 (26, 14, 16, 3, '2026-02-20 01:19:55', NULL, 'aprobado', ''),
@@ -171,7 +173,20 @@ INSERT INTO `prestamos` (`id`, `bailarin_id`, `vestuario_id`, `funcion_id`, `fec
 (49, 6, 14, 3, '2026-02-20 01:27:25', NULL, 'aprobado', ''),
 (50, 6, 14, 3, '2026-02-20 01:27:41', NULL, 'aprobado', ''),
 (51, 11, 14, 3, '2026-02-20 01:27:54', '2026-02-19 21:28:40', 'devuelto', ''),
-(52, 11, 14, 3, '2026-02-20 01:28:51', NULL, 'aprobado', '');
+(52, 11, 14, 3, '2026-02-20 01:28:51', NULL, 'aprobado', ''),
+(53, 5, 43, 5, '2026-03-06 01:44:15', NULL, 'aprobado', ''),
+(54, 6, 42, 5, '2026-03-06 01:50:25', NULL, 'aprobado', ''),
+(55, 16, 28, 5, '2026-03-06 01:53:09', '2026-03-06 01:53:41', 'devuelto', ''),
+(56, 16, 28, 5, '2026-03-06 02:01:44', '2026-03-06 02:04:39', 'devuelto', 'Unico'),
+(57, 16, 29, 5, '2026-03-06 02:01:58', '2026-03-06 02:04:49', 'devuelto', 'Unico'),
+(58, 16, 28, 5, '2026-03-06 02:02:06', NULL, 'aprobado', ''),
+(59, 16, 29, 5, '2026-03-06 02:03:00', NULL, 'aprobado', 'Única'),
+(60, 16, 30, 5, '2026-03-06 02:03:10', NULL, 'aprobado', 'Única'),
+(61, 16, 31, 5, '2026-03-06 02:03:20', NULL, 'aprobado', 'Única'),
+(62, 16, 28, 5, '2026-03-06 02:03:54', NULL, 'aprobado', 'Única'),
+(63, 9, 40, 5, '2026-03-06 02:09:33', NULL, 'aprobado', 'Color tumbo'),
+(64, 9, 41, 5, '2026-03-06 02:09:59', NULL, 'aprobado', 'Color celeste'),
+(65, 9, 43, 5, '2026-03-06 02:10:55', NULL, 'aprobado', 'Solo fustes color verde');
 
 -- --------------------------------------------------------
 
@@ -180,15 +195,15 @@ INSERT INTO `prestamos` (`id`, `bailarin_id`, `vestuario_id`, `funcion_id`, `fec
 --
 
 CREATE TABLE `vestuarios` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `descripcion` text DEFAULT NULL,
-  `talla` varchar(10) DEFAULT NULL,
-  `genero` enum('Hombre','Mujer','Unisex') NOT NULL,
-  `cantidad_total` int(11) DEFAULT 1,
-  `cantidad_disponible` int(11) DEFAULT 1,
-  `imagen` varchar(255) DEFAULT NULL,
-  `creado_en` timestamp NOT NULL DEFAULT current_timestamp()
+  `id` int NOT NULL,
+  `nombre` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `descripcion` text COLLATE utf8mb4_unicode_ci,
+  `talla` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `genero` enum('Hombre','Mujer','Unisex') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cantidad_total` int DEFAULT '1',
+  `cantidad_disponible` int DEFAULT '1',
+  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `creado_en` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -196,7 +211,7 @@ CREATE TABLE `vestuarios` (
 --
 
 INSERT INTO `vestuarios` (`id`, `nombre`, `descripcion`, `talla`, `genero`, `cantidad_total`, `cantidad_disponible`, `imagen`, `creado_en`) VALUES
-(4, 'Almillas ', '', 'unica', 'Mujer', 11, 1, '', '2026-02-19 20:47:15'),
+(4, 'Almillas ', '', 'unica', 'Mujer', 11, 2, '', '2026-02-19 20:47:15'),
 (5, 'Chumpis con chuspas ', '', 'unica', 'Mujer', 10, 0, '', '2026-02-19 20:47:49'),
 (6, 'Aguayo', '', 'unica', 'Unisex', 15, 13, '', '2026-02-19 20:48:20'),
 (7, 'Sombrero de oveja', '', 'unica', 'Unisex', 20, 20, '', '2026-02-19 20:48:49'),
@@ -214,12 +229,28 @@ INSERT INTO `vestuarios` (`id`, `nombre`, `descripcion`, `talla`, `genero`, `can
 (19, 'Manta ', '', 'Guinda', 'Mujer', 2, 2, '', '2026-02-19 20:59:08'),
 (20, 'Manta ', '', 'Ploma', 'Mujer', 2, 2, '', '2026-02-19 20:59:22'),
 (21, 'Camisa de tocuyo', '', '', 'Mujer', 5, 5, '', '2026-02-19 21:07:38'),
-(22, 'Caporales botas pantalón sombrero y faja ', '', 'unica', 'Hombre', 10, 9, '', '2026-02-19 21:18:55'),
+(22, 'Caporales botas pantal??n sombrero y faja ', '', 'unica', 'Hombre', 10, 9, '', '2026-02-19 21:18:55'),
 (23, 'Caporales chaqueta', '', 'unica', 'Hombre', 10, 10, '', '2026-02-19 21:20:58'),
-(24, 'Caporales blusa corsé   ', '', '', 'Mujer', 10, 10, '', '2026-02-19 21:22:04'),
+(24, 'Caporales blusa cors??   ', '', '', 'Mujer', 10, 10, '', '2026-02-19 21:22:04'),
 (25, 'Caporales pollera tullmas y sombrero', '', '10', 'Mujer', 10, 1, '', '2026-02-19 21:23:08'),
 (26, 'Caporal tacos', '', '', 'Mujer', 10, 10, '', '2026-02-19 21:23:32'),
-(27, 'Pantalones Oriente', '', 'blancos', 'Hombre', 2, 2, '', '2026-02-19 21:25:35');
+(27, 'Pantalones Oriente', '', 'blancos', 'Hombre', 2, 2, '', '2026-02-19 21:25:35'),
+(28, 'Pujllay acsu', '', '', 'Mujer', 6, 4, '', '2026-03-05 23:59:54'),
+(29, 'pujllay almilla', '', '', 'Mujer', 6, 5, '', '2026-03-06 00:00:10'),
+(30, 'pujllay sombrero', '', '', 'Mujer', 6, 5, '', '2026-03-06 00:00:24'),
+(31, 'pujllay cintas con monedas', '', '', 'Mujer', 6, 5, '', '2026-03-06 00:00:46'),
+(32, 'pujllay topos', '', '', 'Mujer', 6, 6, '', '2026-03-06 00:01:03'),
+(33, 'Pujllay Saco', '', '', 'Hombre', 6, 6, '', '2026-03-06 00:01:28'),
+(34, 'pujllay pantalón negro', '', '', 'Hombre', 6, 6, '', '2026-03-06 01:32:13'),
+(35, 'Pujllay poncho', '', '', 'Hombre', 6, 6, '', '2026-03-06 01:32:37'),
+(36, 'Pañoleta fucsia', '	', '', 'Hombre', 10, 10, '', '2026-03-06 01:38:03'),
+(37, 'Pañoleta amarilla ', '', '', 'Hombre', 12, 12, '', '2026-03-06 01:38:20'),
+(38, 'Pujllay flores montera  ', '', '', 'Hombre', 6, 6, '', '2026-03-06 01:38:47'),
+(39, 'Cofia', '', '', 'Hombre', 6, 6, '', '2026-03-06 01:39:08'),
+(40, 'pollera chuquisaqueña ', '', '', 'Mujer', 6, 5, '', '2026-03-06 01:39:58'),
+(41, 'Blusa chuquisaqueña', '', '', 'Mujer', 6, 5, '', '2026-03-06 01:40:09'),
+(42, 'Leva ', '', 'negra', 'Hombre', 6, 5, '', '2026-03-06 01:40:39'),
+(43, 'traje cantarina', '3 fustes, 1 pollera, 1 blusa', '', 'Mujer', 4, 2, '', '2026-03-06 01:41:32');
 
 --
 -- Índices para tablas volcadas
@@ -268,31 +299,31 @@ ALTER TABLE `vestuarios`
 -- AUTO_INCREMENT de la tabla `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `bailarines`
 --
 ALTER TABLE `bailarines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `funciones`
 --
 ALTER TABLE `funciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `prestamos`
 --
 ALTER TABLE `prestamos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `vestuarios`
 --
 ALTER TABLE `vestuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- Restricciones para tablas volcadas
